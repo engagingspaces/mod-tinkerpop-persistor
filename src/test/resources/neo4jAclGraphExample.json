@@ -1,0 +1,40 @@
+{
+    "mode":"NORMAL",
+    "vertices":
+    [
+        {"name":"Principals","_id":1,"_type":"vertex"},
+        {"name":"Folders","_id":2,"_type":"vertex"},
+        {"name":"root","_id":3,"_type":"vertex"},
+        {"name":"All principals","_id":4,"_type":"vertex"},
+        {"name":"Regular users","_id":5,"_type":"vertex"},
+        {"name":"user1","_id":6,"_type":"vertex"},
+        {"name":"user2","_id":7,"_type":"vertex"},
+        {"name":"Root folder","_id":8,"_type":"vertex"},
+        {"name":"Home","_id":9,"_type":"vertex"},
+        {"name":"Temp","_id":10,"_type":"vertex"},
+        {"name":"User1 Home","_id":11,"_type":"vertex"},
+        {"name":"My File.pdf","_id":12,"_type":"vertex"}
+    ],
+    "edges":
+    [
+        {"_id":13,"_type":"edge","_outV":1,"_inV":3,"_label":"PRINCIPAL"},
+        {"_id":14,"_type":"edge","_outV":1,"_inV":4,"_label":"PRINCIPAL"},
+        {"_id":15,"_type":"edge","_outV":1,"_inV":5,"_label":"PRINCIPAL"},
+        {"_id":16,"_type":"edge","_outV":1,"_inV":6,"_label":"PRINCIPAL"},
+        {"_id":17,"_type":"edge","_outV":1,"_inV":7,"_label":"PRINCIPAL"},
+        {"_id":18,"_type":"edge","_outV":3,"_inV":4,"_label":"IS_MEMBER_OF_GROUP"},
+        {"_id":19,"_type":"edge","_outV":5,"_inV":4,"_label":"IS_MEMBER_OF_GROUP"},
+        {"_id":20,"_type":"edge","_outV":6,"_inV":5,"_label":"IS_MEMBER_OF_GROUP"},
+        {"_id":21,"_type":"edge","_outV":7,"_inV":5,"_label":"IS_MEMBER_OF_GROUP"},
+        {"_id":22,"_type":"edge","_outV":2,"_inV":8,"_label":"CONTENT_ROOT"},
+        {"_id":23,"_type":"edge","_outV":8,"_inV":9,"_label":"HAS_CHILD_CONTENT"},
+        {"_id":24,"_type":"edge","_outV":8,"_inV":10,"_label":"HAS_CHILD_CONTENT"},
+        {"_id":25,"_type":"edge","_outV":9,"_inV":11,"_label":"HAS_CHILD_CONTENT"},
+        {"_id":26,"_type":"edge","_outV":11,"_inV":12,"_label":"HAS_CHILD_CONTENT"},
+        {"_id":27,"_type":"edge","_outV":3,"_inV":8,"flags":"+W","_label":"SECURITY"},
+        {"_id":28,"_type":"edge","_outV":4,"_inV":8,"flags":"+R","_label":"SECURITY"},
+        {"_id":29,"_type":"edge","_outV":4,"_inV":10,"flags":"+W","_label":"SECURITY"},
+        {"_id":30,"_type":"edge","_outV":5,"_inV":11,"flags":"-RW","_label":"SECURITY"},
+        {"_id":31,"_type":"edge","_outV":6,"_inV":11,"flags":"+RW","_label":"SECURITY"}
+    ]
+}

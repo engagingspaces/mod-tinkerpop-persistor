@@ -1,0 +1,35 @@
+{
+    "main": "eu.tradegrid.tinkerpop.persistor.TinkerpopPersistor",
+    "includes": "io.vertx~mod-rxjava~1.0.0-beta1-SNAPSHOT",
+    "worker": true,
+    "multi-threaded": true,
+    
+    "description": "Tinkerpop persistor module for Vert.x",
+    "licenses": ["The Apache Software License Version 2.0"],
+    "author": "Arnold Schrijver",
+    "keywords": ["tinkerpop", "blueprints", "graph", "graphdb", "graphson", "database", "databases", "nosql", "gremlin"],
+    "homepage": "https://github.com/aschrijver/mod-tinkerpop-persistor",
+    
+    // Graph database configuration (required). Currently configured for OrientDB.
+    "tinkerpopConfig":
+    {
+        "blueprints.graph": "com.tinkerpop.blueprints.impls.orient.OrientGraph",
+        
+        // OrientDB-specific stuff (Change when using other graph database e.g. Neo4J).
+        //
+        // For a quick OrientDB intro read this blog by Glenn Goodrich: 
+        //     http://www.sitepoint.com/a-look-at-orientdb-the-graph-document-nosql/
+        //
+        // Change this to use your own database url (local or remote). 
+        // Defaults to standard Tinkerpop database (assumes running server from <OrientDB-location>/bin)
+        "blueprints.orientdb.url": "plocal:../databases/tinkerpop",
+        
+        // Create a user by editing <OrientDB-location>/config/orientdb-server-config.xml user section.
+        "blueprints.orientdb.username": "admin",
+        "blueprints.orientdb.password": "admin@orientdb",
+        
+        // Tinkerpop Graphson mode to use in message formats by default (can be overridden).
+        // Supported values are NORMAL, COMPACT, EXTENDED
+        "graphson.mode": "NORMAL"
+    }
+}

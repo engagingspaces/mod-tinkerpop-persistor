@@ -1,0 +1,17 @@
+{
+    "action": "addVertex",
+    "vertices": [
+        {
+            "project": "vert.x",
+            "organization": "eclipse",
+            "_id": "2",
+            "_type": "vertex"
+        },
+        {
+            "project": "mod-tinkerpop-persistor",
+            "organization": "github",
+            "_id": "3",
+            "_type": "vertex"
+        }
+    ]
+}
