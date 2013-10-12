@@ -65,7 +65,7 @@ public class JsonUtility {
             graphJsonResult = os.toString("UTF-8");
         }
         
-        return new JsonObject(graphJsonResult);
+        return new JsonObject().putObject("graph", new JsonObject(graphJsonResult));
     }
     
     public void deserializeGraph(Graph graph, JsonObject graphJson) 

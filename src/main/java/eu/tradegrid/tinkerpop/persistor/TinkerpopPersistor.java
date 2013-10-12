@@ -381,9 +381,9 @@ public class TinkerpopPersistor extends BusModBase implements Handler<Message<Js
             return;            
         }
         
-        JsonObject reply = new JsonObject()
+        JsonObject reply = new JsonObject().putObject("graph", new JsonObject()
                 .putString("mode", jsonUtility.getGraphSONMode())
-                .putArray("vertices", verticesJson);
+                .putArray("vertices", verticesJson));
         
         sendOK(message, reply);
     }
@@ -505,9 +505,9 @@ public class TinkerpopPersistor extends BusModBase implements Handler<Message<Js
             return;
         }
         
-        JsonObject reply = new JsonObject()
+        JsonObject reply = new JsonObject().putObject("graph", new JsonObject()
                 .putString("mode", jsonUtility.getGraphSONMode())
-                .putArray("edges", edges);
+                .putArray("edges", edges));
         
         sendOK(message, reply);
     }
@@ -680,10 +680,10 @@ public class TinkerpopPersistor extends BusModBase implements Handler<Message<Js
         }
         
         String arrayElement = elementType == "Vertex" ? "vertices" : "edges";
-        JsonObject reply = new JsonObject()
+        JsonObject reply = new JsonObject().putObject("graph", new JsonObject()
                 .putString("mode", jsonUtility.getGraphSONMode())
                 .putArray(arrayElement, new JsonArray()
-                        .addObject(elementJson));
+                        .addObject(elementJson)));
         
         sendOK(message, reply);
     }
