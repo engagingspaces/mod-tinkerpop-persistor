@@ -3,25 +3,41 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
     <groupId>eu.tradegrid</groupId>
     <artifactId>mod-tinkerpop-persistor</artifactId>
     <packaging>jar</packaging>
     <version>0.1.0-SNAPSHOT</version>
+    
     <name>Vert.x Tinkerpop Persistor Module</name>
+    <description>A simple database persistence module for Vert.x that uses Tinkerpop Blueprints and Tinkerpop Gremlin 
+    to communicate to the underlying graph database.</description>
     <url>https://github.com/aschrijver/mod-tinkerpop-persistor</url>
-
     <inceptionYear>2013</inceptionYear>
+
     <developers>
         <developer>
             <name>Arnold Schrijver</name>
         </developer>
     </developers>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:aschrijver/mod-tinkerpop-persistor.git</connection>
+        <developerConnection>scm:git:git@github.com:aschrijver/mod-tinkerpop-persistor.git</developerConnection>
+        <url>git@github.com:aschrijver/mod-tinkerpop-persistor.git</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -184,9 +200,6 @@
                 <groupId>io.vertx</groupId>
                 <artifactId>vertx-maven-plugin</artifactId>
                 <version>${maven.vertx.plugin.version}</version>
-                <!-- You can specify extra config to the plugin as required here <configuration> <configFile>/path/to/MyVerticle.conf</configFile> 
-                    <instances>1</instances> <classpath>src/main/resources/:src/test/resources/:target/classes/:target/test-classes/</classpath> 
-                    </configuration> -->
                 <executions>
                     <execution>
                         <id>PullInDeps</id>
@@ -199,6 +212,7 @@
             </plugin>
 
             <!-- Other plugins required by the build -->
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -208,6 +222,7 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>${maven.resources.plugin.version}</version>
@@ -230,6 +245,7 @@
                     </execution>
                 </executions>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -248,6 +264,7 @@
                     </execution>
                 </executions>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -258,6 +275,7 @@
                     </includes>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -282,6 +300,7 @@
                     </execution>
                 </executions>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
@@ -303,6 +322,7 @@
                     </execution>
                 </executions>
             </plugin>
+            
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
@@ -321,10 +341,11 @@
                 </executions>
             </plugin>
         </plugins>
+        
         <pluginManagement>
             <plugins>
-                <!-- This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven 
-                    build itself. -->
+                <!-- This plugin's configuration is used to store Eclipse m2e settings only.
+                     It has no influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -365,6 +386,7 @@
             </plugins>
         </pluginManagement>
     </build>
+    
     <reporting>
         <plugins>
             <plugin>
