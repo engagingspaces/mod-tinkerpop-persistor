@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 the original author or authors.
+ * Copyright (c) 2013 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +53,7 @@ import eu.tradegrid.tinkerpop.persistor.util.JsonUtility;
  * <p/>
  * Please see the README.md for more detailed information.
  * <p/> 
- * @author Arnold Schrijver
+ * @author <a href="https://github.com/aschrijver">Arnold Schrijver</a>
  */
 public class TinkerpopPersistor extends BusModBase implements Handler<Message<JsonObject>> {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 the original author or authors.
+ * Copyright (c) 2013 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ import rx.util.functions.Func1;
  * <a href="http://www.neo4j.org/">Neo4J</a> and
  * <a href="https://github.com/orientechnologies/orientdb">OrientDB</a>.
  * <p/>
- * @author Arnold Schrijver
+ * @author <a href="https://github.com/aschrijver">Arnold Schrijver</a>
  */
 public class TinkerpopModuleIntegrationTests extends TestVerticle {
     
