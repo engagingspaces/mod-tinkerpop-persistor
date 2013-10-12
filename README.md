@@ -14,7 +14,7 @@ The module is used in a similar way to the [Mongo Persistor Module](https://gith
 Module Configuration
 --------------------
 
-The configuration of the Vert.x module depends on the graph database implementation that is used. The configuration can be specified in the `mod.json' file. In all cases it must be included in a `tinkerpopConfig` object.
+The configuration of the Vert.x module depends on the graph database implementation that is used. The configuration can be specified in the `mod.json` file. In all cases it must be included in a `tinkerpopConfig` object.
 
 For Neo4J a sample configuration looks like this:
 
@@ -54,22 +54,22 @@ The table below lists the actions that are currently supported by the module. Ea
 
 > NOTE: Instead of `Vertex` and `Edge` the terminology of `Node` and `Relationship` can be used interchangeably in actions if you are used to that, or find that it clashes with `Vert.x` :-)
 
-| Action                         | Description |
-|--------------------------------|-------------|
-| addGraph                       | Load a complete [Graph](https://github.com/tinkerpop/blueprints/blob/master/blueprints-core/src/main/java/com/tinkerpop/blueprints/Graph.java) (provided in [GraphSON format](https://github.com/tinkerpop/blueprints/wiki/GraphSON-Reader-and-Writer-Library)) in a single operation |
-| addVertex, addNode             | Add a single Vertex to the graph |
-| query                          | Perform a Gremlin query and return the resulting Vertices or Edges |
-| getVertices, getNodes          | Get all Vertices from the graph or a filtered list by key / value |
-| getVertex, getNode             | Get a single Vertex from the graph |
-| removeVertex, removeNode       | Remove a single Vertex from the graph |
-| addEdge, addRelationship       | Add a single Edge to the graph that connects two Vertices |
-| getEdges, getRelationships     | Get all Edges from the graph or a filtered list by key / value |
-| getEdge, getRelationship       | Get a single Edge from the graph |
-| removeEdge, removeRelationship | Remove a single Edge from the graph |
-| createKeyIndex                 | Create a new Key Index for the provided key on either Vertices or Edges |
-| dropKeyIndex                   | Drop an existing Key Index on either Vertices or Edges |
-| getIndexedKeys                 | Get the list of all existing Key Indices on either Vertices or Edges |
-| flushQueryCache                | Remove one or all cached Gremlin queries |
+| Action                                                                                                                  | Description |
+|-------------------------------------------------------------------------------------------------------------------------|-------------|
+| [addGraph](https://github.com/aschrijver/mod-tinkerpop-persistor#addgraph)                                              | Load a complete [Graph](https://github.com/tinkerpop/blueprints/blob/master/blueprints-core/src/main/java/com/tinkerpop/blueprints/Graph.java) (provided in [GraphSON format](https://github.com/tinkerpop/blueprints/wiki/GraphSON-Reader-and-Writer-Library)) in a single operation |
+| [addVertex, addNode](https://github.com/aschrijver/mod-tinkerpop-persistor#addvertex-addnode)                           | Add a single Vertex to the graph |
+| [query](https://github.com/aschrijver/mod-tinkerpop-persistor#query)                                                    | Perform a Gremlin query and return the resulting Vertices or Edges |
+| [getVertices, getNodes](https://github.com/aschrijver/mod-tinkerpop-persistor#getvertices-getnodes)                     | Get all Vertices from the graph or a filtered list by key / value |
+| [getVertex, getNode](https://github.com/aschrijver/mod-tinkerpop-persistor#getvertex-getnode)                           | Get a single Vertex from the graph |
+| [removeVertex, removeNode](https://github.com/aschrijver/mod-tinkerpop-persistor#removevertex-removenode)               | Remove a single Vertex from the graph |
+| [addEdge, addRelationship](https://github.com/aschrijver/mod-tinkerpop-persistor#addedge-addrelationship)               | Add a single Edge to the graph that connects two Vertices |
+| [getEdges, getRelationships](https://github.com/aschrijver/mod-tinkerpop-persistor#getedges-getrelationships)           | Get all Edges from the graph or a filtered list by key / value |
+| [getEdge, getRelationship](https://github.com/aschrijver/mod-tinkerpop-persistor#getedge-getrelationship)               | Get a single Edge from the graph |
+| [removeEdge, removeRelationship](https://github.com/aschrijver/mod-tinkerpop-persistor#removeedge-removerelationship)   | Remove a single Edge from the graph |
+| [createKeyIndex](https://github.com/aschrijver/mod-tinkerpop-persistor#createkeyindex)                                  | Create a new Key Index for the provided key on either Vertices or Edges |
+| [dropKeyIndex](https://github.com/aschrijver/mod-tinkerpop-persistor#dropkeyindex)                                      | Drop an existing Key Index on either Vertices or Edges |
+| [getIndexedKeys](https://github.com/aschrijver/mod-tinkerpop-persistor#getindexedkeys)                                  | Get the list of all existing Key Indices on either Vertices or Edges |
+| [flushQueryCache](https://github.com/aschrijver/mod-tinkerpop-persistor#flushquerycache)                                | Remove one or all cached Gremlin queries |
 
 Action Description
 ------------------
@@ -118,16 +118,19 @@ Vert.x reply depends on the `ignoresSuppliedIds` feature of the Graph. If it is 
 
 ```
 {
-    "mode": "NORMAL",
-    "vertices":
-    [
-        {"name":"marko","age":29,"_id":"#9:10","_type":"vertex"}
-        //... etcetera
-    ],
-    "edges":
-    [
-        //...etcetera
-    ],
+    "graph":
+    {
+        "mode": "NORMAL",
+        "vertices":
+        [
+            {"name":"marko","age":29,"_id":"#9:10","_type":"vertex"}
+            //... etcetera
+        ],
+        "edges":
+        [
+            //...etcetera
+        ]
+    },
     "status": "ok"
 }
 ```
@@ -232,16 +235,19 @@ The Vert.x reply is in GraphSON format and includes the GraphSON `mode` (which d
 
 ```
 {
-    "mode": "NORMAL",
-    "vertices":
-    [
-        {
-            "name" : "Root folder",
-            "origId" : 8,
-            "_id" : "#9:7",
-            "_type" : "vertex"
-        }
-    ],
+    "graph":
+    {
+        "mode": "NORMAL",
+        "vertices":
+        [
+            {
+                "name" : "Root folder",
+                "origId" : 8,
+                "_id" : "#9:7",
+                "_type" : "vertex"
+            }
+        ]
+    },
     "status": "ok"
 }
 ```
@@ -263,16 +269,19 @@ The Vert.x reply is in GraphSON format:
 
 ```
 {
-    "mode": "NORMAL",
-    "vertices":
-    [
-        {
-            "name" : "User1 Home",
-            "origId" : 11,
-            "_id" : "#9:10",
-            "_type" : "vertex"
-        }
-    ],
+    "graph":
+    {
+        "mode": "NORMAL",
+        "vertices":
+        [
+            {
+                "name" : "User1 Home",
+                "origId" : 11,
+                "_id" : "#9:10",
+                "_type" : "vertex"
+            }
+        ]
+    },
     "status": "ok"
 }
 ```
